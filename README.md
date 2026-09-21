@@ -1,11 +1,14 @@
 # skills
 
-Claude Code skills for writing and reviewing clean code.
+Skills for writing and reviewing clean code with Claude Code, and domain-driven design with Codex.
 
 | Skill | Use when |
 |-------|----------|
 | [writing-clean-code](writing-clean-code/SKILL.md) | Writing new code — SOLID, dependency injection, naming, pattern selection |
 | [adversarial-review](adversarial-review/SKILL.md) | Reviewing existing code — multi-agent smell hunt with adversarial verification |
+| [domain-driven-design](domain-driven-design/SKILL.md) | Codex domain modeling — sequential subagents from discovery and strategic design through tactical modeling, adversarial skepticism, and parent reconciliation |
+
+`domain-driven-design` supports greenfield and existing systems. Each phase builds on accepted upstream conclusions and can challenge them with new evidence. It uses ordinary Codex runtime subagents, requires no custom agent installation, and treats “no DDD abstraction needed” as a valid outcome.
 
 ## adversarial-review at a glance
 
@@ -27,7 +30,7 @@ review set ──▶ 9 hunters (blind, parallel within capacity) ──▶ merge
 
 ## Install
 
-Skills (both):
+Claude Code skills (writing and review):
 
 ```bash
 git clone <this repo>
@@ -45,6 +48,15 @@ done
 
 The adversarial-review skill does not require the standalone install; its orchestrator spawns the roles as subagents directly from the `agents/` files.
 
+Codex skill (run from the cloned repository root):
+
+```bash
+mkdir -p ~/.agents/skills
+ln -s "$PWD/domain-driven-design" ~/.agents/skills/domain-driven-design
+```
+
+Invoke `$domain-driven-design` for substantive DDD work in a Codex session with subagents available.
+
 ## Layout
 
 ```
@@ -56,4 +68,7 @@ adversarial-review/
   agents/                  # 10 roles: 5 smell hunters, SOLID, 3 clean-code hunters, skeptic
   references/              # smell catalogs (code + pseudocode), SOLID violations,
                            # scope-collection, refactoring-techniques, prior-art
+domain-driven-design/
+  SKILL.md                 # sequential Codex orchestration, skeptic, reconciliation
+  references/              # strategic and tactical phase contracts with source grounding
 ```
