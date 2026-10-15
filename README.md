@@ -1,9 +1,10 @@
 # skills
 
-Skills for writing and reviewing clean code with Claude Code, and domain-driven design with Codex.
+Skills for code design and review, domain-driven design, and technical documentation with Claude Code and Codex.
 
 | Skill | Use when |
 |-------|----------|
+| [technical-writing](technical-writing/SKILL.md) | Technical documents — direct prose, overview-first structure, precise interactions, Mermaid diagrams, and a generic HTML shell |
 | [writing-clean-code](writing-clean-code/SKILL.md) | Writing new code — SOLID, dependency injection, naming, pattern selection |
 | [adversarial-review](adversarial-review/SKILL.md) | Reviewing existing code — multi-agent smell hunt with adversarial verification |
 | [domain-driven-design](domain-driven-design/SKILL.md) | Codex domain modeling — sequential subagents from discovery and strategic design through tactical modeling, adversarial skepticism, and parent reconciliation |
@@ -57,9 +58,16 @@ ln -s "$PWD/domain-driven-design" ~/.agents/skills/domain-driven-design
 
 Invoke `$domain-driven-design` for substantive DDD work in a Codex session with subagents available.
 
+Invoke `$technical-writing` for architecture guides, design proposals, procedures, reference documentation, and technical explanations. RFCs use an optional reference; the skill does not impose RFC structure on other documents.
+
 ## Layout
 
 ```
+technical-writing/
+  SKILL.md                 # audience, document structure, flow, precise technical prose
+  agents/openai.yaml       # Codex discovery metadata
+  assets/document.html     # generic standalone HTML shell
+  references/              # HTML rendering and optional RFC structure
 writing-clean-code/
   SKILL.md                 # core discipline, links out
   references/              # solid, dependency-injection, clean-code-rules, design-patterns
